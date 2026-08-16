@@ -1871,7 +1871,7 @@
           </table>
         </div>
         <div style="margin-top:16px;display:flex;gap:10px;justify-content:flex-end;">
-          <button class="btn btn-secondary" onclick="exportAllSubmissions('${formId}')">📥 Export All (JSON)</button>
+          <button class="btn btn-secondary" onclick="exportAllSubmissions('${formId}')">📥 Export All (XLSX)</button>
           <button class="btn btn-primary" onclick="closeSubModal(); openForm('${formId}');">+ New Submission</button>
         </div>
       `;
@@ -2363,6 +2363,274 @@
   }
   generateDemoData();
 
+  
+  // ===================== MINIMAL XLSX GENERATOR =====================
+  // Generates proper .xlsx files (ZIP of XML) without external libraries
+  const XLSX = {
+    // CRC32 table for ZIP
+    _crcTable: null,
+    _getCrcTable() {
+      if (this._crcTable) return this._crcTable;
+      const table = new Uint32Array(256);
+      for (let i = 0; i < 256; i++) {
+        let c = i;
+        for (let j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        table[i] = c;
+      }
+      this._crcTable = table;
+      return table;
+    },
+    _crc32(str) {
+      const table = this._getCrcTable();
+      let crc = -1;
+      for (let i = 0; i < str.length; i++) {
+        crc = (crc >>> 8) ^ table[(crc ^ str.charCodeAt(i)) & 0xFF];
+      }
+      return (crc ^ -1) >>> 0;
+    },
+    _utf8(str) {
+      return new TextEncoder().encode(str);
+    },
+    _dateToExcel(d) {
+      // Excel serial date: days since 1899-12-30
+      return (d.getTime() / 86400000) + 25569;
+    },
+    _escapeXml(str) {
+      if (str == null) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+    write(dataArray, sheetName) {
+      // dataArray: array of objects
+      if (!dataArray || !dataArray.length) return null;
+      const keys = Object.keys(dataArray[0]).filter(k => !k.startsWith('_'));
+
+      // Build shared strings
+      const sharedStrings = [];
+      const stringIndex = {};
+      let sstCount = 0;
+      let sstUnique = 0;
+      function addString(s) {
+        const val = String(s);
+        if (val in stringIndex) { sstCount++; return stringIndex[val]; }
+        stringIndex[val] = sstUnique;
+        sharedStrings.push(val);
+        sstCount++; sstUnique++;
+        return stringIndex[val];
+      }
+
+      // Build sheet XML
+      let rows = '';
+      // Header row
+      let headerCells = '';
+      keys.forEach((key, ci) => {
+        const col = this._colName(ci);
+        const si = addString(key);
+        headerCells += `<c r="${col}1" t="s"><v>${si}</v></c>`;
+      });
+      rows += `<row r="1">${headerCells}</row>`;
+
+      // Data rows
+      dataArray.forEach((obj, ri) => {
+        let cells = '';
+        keys.forEach((key, ci) => {
+          const col = this._colName(ci);
+          const val = obj[key];
+          const cellRef = col + (ri + 2);
+          if (val == null || val === '') {
+            cells += `<c r="${cellRef}"/>`;
+          } else if (typeof val === 'number') {
+            cells += `<c r="${cellRef}"><v>${val}</v></c>`;
+          } else if (val instanceof Date || (typeof val === 'string' && /^\d{4}-\d{2}-\d{2}/.test(val))) {
+            const d = new Date(val);
+            if (!isNaN(d)) {
+              cells += `<c r="${cellRef}" s="1"><v>${this._dateToExcel(d)}</v></c>`;
+            } else {
+              const si = addString(val);
+              cells += `<c r="${cellRef}" t="s"><v>${si}</v></c>`;
+            }
+          } else {
+            const si = addString(val);
+            cells += `<c r="${cellRef}" t="s"><v>${si}</v></c>`;
+          }
+        });
+        rows += `<row r="${ri + 2}">${cells}</row>`;
+      });
+
+      const sstXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="${sstCount}" uniqueCount="${sstUnique}">
+${sharedStrings.map(s => `<si><t>${this._escapeXml(s)}</t></si>`).join('')}
+</sst>`;
+
+      const sheetXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <sheetData>${rows}</sheetData>
+</worksheet>`;
+
+      const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <numFmts count="1"><numFmt numFmtId="164" formatCode="YYYY-MM-DD"/></numFmts>
+  <cellXfs count="2">
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
+    <xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+  </cellXfs>
+</styleSheet>`;
+
+      const workbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets><sheet name="${this._escapeXml(sheetName || 'Sheet1')}" sheetId="1" r:id="rId1"/></sheets>
+</workbook>`;
+
+      const relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
+  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+  <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>
+</Relationships>`;
+
+      const pkgRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`;
+
+      const ctXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
+  <Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>
+</Types>`;
+
+      const files = [
+        { name: '[Content_Types].xml', content: ctXml },
+        { name: '_rels/.rels', content: pkgRelsXml },
+        { name: 'xl/_rels/workbook.xml.rels', content: relsXml },
+        { name: 'xl/workbook.xml', content: workbookXml },
+        { name: 'xl/styles.xml', content: stylesXml },
+        { name: 'xl/sharedStrings.xml', content: sstXml },
+        { name: 'xl/worksheets/sheet1.xml', content: sheetXml }
+      ];
+
+      return this._zip(files);
+    },
+    _colName(n) {
+      let s = '';
+      n++;
+      while (n > 0) { n--; s = String.fromCharCode(65 + (n % 26)) + s; n = Math.floor(n / 26); }
+      return s;
+    },
+    _zip(files) {
+      const parts = [];
+      let cdOffset = 0;
+      const cdEntries = [];
+
+      files.forEach(f => {
+        const content = typeof f.content === 'string' ? this._utf8(f.content) : f.content;
+        const crc = this._crc32(f.content);
+        const uncompressedSize = content.length;
+        const compressedSize = uncompressedSize; // Store uncompressed for simplicity
+
+        // Local file header
+        const lfh = new Uint8Array(30 + f.name.length);
+        let p = 0;
+        lfh[p++] = 0x50; lfh[p++] = 0x4B; lfh[p++] = 0x03; lfh[p++] = 0x04; // sig
+        lfh[p++] = 20; lfh[p++] = 0; // version
+        lfh[p++] = 0; lfh[p++] = 0; // flags
+        lfh[p++] = 0; lfh[p++] = 0; // compression: store
+        lfh[p++] = 0; lfh[p++] = 0; // time
+        lfh[p++] = 0; lfh[p++] = 0; // date
+        lfh[p++] = crc & 0xFF; lfh[p++] = (crc >>> 8) & 0xFF; lfh[p++] = (crc >>> 16) & 0xFF; lfh[p++] = (crc >>> 24) & 0xFF;
+        lfh[p++] = compressedSize & 0xFF; lfh[p++] = (compressedSize >>> 8) & 0xFF; lfh[p++] = (compressedSize >>> 16) & 0xFF; lfh[p++] = (compressedSize >>> 24) & 0xFF;
+        lfh[p++] = uncompressedSize & 0xFF; lfh[p++] = (uncompressedSize >>> 8) & 0xFF; lfh[p++] = (uncompressedSize >>> 16) & 0xFF; lfh[p++] = (uncompressedSize >>> 24) & 0xFF;
+        lfh[p++] = f.name.length & 0xFF; lfh[p++] = (f.name.length >>> 8) & 0xFF;
+        lfh[p++] = 0; lfh[p++] = 0; // extra field len
+        for (let i = 0; i < f.name.length; i++) lfh[p++] = f.name.charCodeAt(i);
+
+        parts.push(lfh);
+        parts.push(content);
+
+        // Central directory entry
+        const cde = new Uint8Array(46 + f.name.length);
+        p = 0;
+        cde[p++] = 0x50; cde[p++] = 0x4B; cde[p++] = 0x01; cde[p++] = 0x02; // sig
+        cde[p++] = 20; cde[p++] = 0; // version made by
+        cde[p++] = 20; cde[p++] = 0; // version needed
+        cde[p++] = 0; cde[p++] = 0; // flags
+        cde[p++] = 0; cde[p++] = 0; // compression
+        cde[p++] = 0; cde[p++] = 0; // time
+        cde[p++] = 0; cde[p++] = 0; // date
+        cde[p++] = crc & 0xFF; cde[p++] = (crc >>> 8) & 0xFF; cde[p++] = (crc >>> 16) & 0xFF; cde[p++] = (crc >>> 24) & 0xFF;
+        cde[p++] = compressedSize & 0xFF; cde[p++] = (compressedSize >>> 8) & 0xFF; cde[p++] = (compressedSize >>> 16) & 0xFF; cde[p++] = (compressedSize >>> 24) & 0xFF;
+        cde[p++] = uncompressedSize & 0xFF; cde[p++] = (uncompressedSize >>> 8) & 0xFF; cde[p++] = (uncompressedSize >>> 16) & 0xFF; cde[p++] = (uncompressedSize >>> 24) & 0xFF;
+        cde[p++] = f.name.length & 0xFF; cde[p++] = (f.name.length >>> 8) & 0xFF;
+        cde[p++] = 0; cde[p++] = 0; // extra
+        cde[p++] = 0; cde[p++] = 0; // comment
+        cde[p++] = 0; cde[p++] = 0; // disk
+        cde[p++] = 0; cde[p++] = 0; // int attr
+        cde[p++] = 0; cde[p++] = 0; cde[p++] = 0; cde[p++] = 0; // ext attr
+        cde[p++] = cdOffset & 0xFF; cde[p++] = (cdOffset >>> 8) & 0xFF; cde[p++] = (cdOffset >>> 16) & 0xFF; cde[p++] = (cdOffset >>> 24) & 0xFF;
+        for (let i = 0; i < f.name.length; i++) cde[p++] = f.name.charCodeAt(i);
+        cdEntries.push(cde);
+
+        cdOffset += lfh.length + content.length;
+      });
+
+      const cdSize = cdEntries.reduce((s, e) => s + e.length, 0);
+      const cdStart = cdOffset;
+
+      // End of central directory
+      const eocd = new Uint8Array(22);
+      let p = 0;
+      eocd[p++] = 0x50; eocd[p++] = 0x4B; eocd[p++] = 0x05; eocd[p++] = 0x06;
+      eocd[p++] = 0; eocd[p++] = 0; // disk
+      eocd[p++] = 0; eocd[p++] = 0; // disk with cd
+      eocd[p++] = files.length & 0xFF; eocd[p++] = (files.length >>> 8) & 0xFF;
+      eocd[p++] = files.length & 0xFF; eocd[p++] = (files.length >>> 8) & 0xFF;
+      eocd[p++] = cdSize & 0xFF; eocd[p++] = (cdSize >>> 8) & 0xFF; eocd[p++] = (cdSize >>> 16) & 0xFF; eocd[p++] = (cdSize >>> 24) & 0xFF;
+      eocd[p++] = cdStart & 0xFF; eocd[p++] = (cdStart >>> 8) & 0xFF; eocd[p++] = (cdStart >>> 16) & 0xFF; eocd[p++] = (cdStart >>> 24) & 0xFF;
+      eocd[p++] = 0; eocd[p++] = 0; // comment len
+
+      const totalSize = parts.reduce((s, p) => s + p.length, 0) + cdSize + eocd.length;
+      const result = new Uint8Array(totalSize);
+      let offset = 0;
+      parts.forEach(part => { result.set(part, offset); offset += part.length; });
+      cdEntries.forEach(entry => { result.set(entry, offset); offset += entry.length; });
+      result.set(eocd, offset);
+
+      return new Blob([result], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    }
+  };
+
+  function exportSubmission(formId, subId) {
+    const subs = getSubmissions(formId);
+    const sub = subs.find(s => s._id === subId);
+    if (!sub) return;
+    const schema = formSchemas[formId];
+    const blob = XLSX.write([sub], schema.title);
+    if (!blob) { alert('No data to export'); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = formId + '_' + subId + '.xlsx';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+  function exportAllSubmissions(formId) {
+    const subs = getSubmissions(formId);
+    if (!subs.length) { alert('No submissions to export'); return; }
+    const schema = formSchemas[formId];
+    const blob = XLSX.write(subs, schema.title);
+    if (!blob) { alert('No data to export'); return; }
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = formId + '_all_submissions.xlsx';
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  
   // ===================== EVENT LISTENERS =====================
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
