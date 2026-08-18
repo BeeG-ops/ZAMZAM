@@ -647,7 +647,7 @@
                       <div class="doc-dot" style="background:var(--emerald);"></div>
                       <div class="doc-info">
                         <div class="doc-name"><a href="docs/SOPs/ZDW-RECALL-SOP-001_Product_Recall.docx">Product Recall SOP</a></div>
-                        <div class="doc-code">ZDW-RECALL-SOP-001 | TFDA Regulations</div>
+                        <div class="doc-code">ZDW-RECALL-SOP-001 | TBS Regulations</div>
                       </div>
                     </div>
                     <span class="doc-status status-active">Active</span>
@@ -1359,6 +1359,7 @@
         { title: 'Physical & Chemical Parameters', fields: [
           { name: 'ph', label: 'pH', type: 'number', step: '0.01', hint: 'Range: 6.5 - 8.5' },
           { name: 'tds', label: 'TDS (mg/L)', type: 'number', step: '0.1', hint: 'Max: 1000 mg/L' },
+          { name: 'temperature', label: 'TEMP (°C)', type: 'number', step: '25.5 °C', hint: 'Max: ' },
           { name: 'turbidity', label: 'Turbidity (NTU)', type: 'number', step: '0.01', hint: 'Max: 1.0 NTU' },
           { name: 'chlorine', label: 'Chlorine Residual (mg/L)', type: 'number', step: '0.01', hint: 'Range: 0.2 - 0.5 mg/L' }
         ]},
@@ -1366,6 +1367,11 @@
           { name: 'coliform', label: 'Coliform (MPN/100ml)', type: 'number', hint: 'Limit: 0/100ml' },
           { name: 'ecoli', label: 'E. coli', type: 'select', options: ['Absent','Present'] },
           { name: 'tpc', label: 'Total Plate Count (CFU/ml)', type: 'number', hint: 'Max: 100 CFU/ml' },
+          { name: 'remarks', label: 'Remarks', type: 'textarea' }
+        ]} 
+        { title: 'Sensory Tests', fields: [
+          { name: 'appearance', label: 'Appearance', type: 'select', options: 'Acceptable', 'Unacceptable' },
+          { name: 'ecoli', label: 'E. coli', type: 'select', options: ['Acceptable','Unacceptable'] },
           { name: 'remarks', label: 'Remarks', type: 'textarea' }
         ]}
       ]
