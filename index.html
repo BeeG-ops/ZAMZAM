@@ -376,8 +376,8 @@
       <div class="landing-logo-wrap">
         <div class="landing-logo">Z</div>
         <div class="landing-brand-text">
-          <h1>KAGENT INVESTIMENT COMPANY</h1>
-            <h2>Zamzam Drinking Water</h2>
+          <h1>KAGENT INVESTMENT COMPANY</h1>
+          <h2>Zamzam Drinking Water</h2>
           <p>Compliance Management Portal</p>
         </div>
       </div>
@@ -395,8 +395,8 @@
           Codex HACCP Aligned
         </div>
         <div class="landing-badge">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-          Offline Ready
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+          GitHub Pages Ready
         </div>
       </div>
       <button class="landing-btn" onclick="enterDashboard()">
@@ -427,7 +427,7 @@
       </div>
     </div>
     <div class="landing-footer">
-      <p>Zamzam Drinking Water · Compliance Dashboard v5.0 · TBS / TFDA / Codex HACCP</p>
+      <p>Zamzam Drinking Water · Compliance Dashboard v5.0 · TBS / Codex HACCP · <a href="#" onclick="openModal('setup');return false;" style="color:rgba(255,255,255,0.5);">Deploy Guide</a></p>
     </div>
   </div>
 
@@ -547,7 +547,7 @@
               <svg id="sunIcon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
             </button>
             <div class="badges">
-              <span class="badge badge-emerald">TBS</span>
+              <span class="badge badge-emerald">TBS / TFDA</span>
               <span class="badge badge-blue">HACCP</span>
             </div>
           </div>
@@ -557,10 +557,10 @@
         <div id="view-dashboard" class="view-section active">
           <div class="setup-banner">
             <div class="setup-banner-text">
-              <strong>First time here?</strong> Place your DOCX / PDF / XLSX files in the <code>docs/</code> folder next to this dashboard.
-              <a href="#" onclick="openModal('setup'); return false;" style="color:#93c5fd;text-decoration:underline;">View setup guide &rarr;</a>
+              <strong>GitHub Pages Deployment</strong> — This dashboard is self-contained. All forms save to browser storage. SOP links point to a <code>docs/</code> folder in your repo.
+              <a href="#" onclick="openModal('setup'); return false;" style="color:#93c5fd;text-decoration:underline;">View deploy guide &rarr;</a>
             </div>
-            <button class="setup-btn" onclick="openModal('setup')">Setup Guide</button>
+            <button class="setup-btn" onclick="openModal('setup')">Deploy Guide</button>
           </div>
           <div class="stats-grid">
             <div class="stat-card"><div><div class="stat-label">Total Documents</div><div class="stat-value">21</div></div><div class="stat-icon" style="background:var(--blue-bg);"><svg fill="none" stroke="var(--blue)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div></div>
@@ -583,6 +583,7 @@
                 <input type="text" id="searchInput" placeholder="Search documents... (Press / to focus)" oninput="searchDocs()">
               </div>
               <div class="doc-list" id="docList">
+
                 <!-- SOPs -->
                 <div class="doc-item" data-type="sop" data-keywords="water laboratory testing sop microbiological chemical physical raw finished tzs 574 789">
                   <div class="doc-row">
@@ -647,7 +648,7 @@
                       <div class="doc-dot" style="background:var(--emerald);"></div>
                       <div class="doc-info">
                         <div class="doc-name"><a href="docs/SOPs/ZDW-RECALL-SOP-001_Product_Recall.docx">Product Recall SOP</a></div>
-                        <div class="doc-code">ZDW-RECALL-SOP-001 | TBS Regulations</div>
+                        <div class="doc-code">ZDW-RECALL-SOP-001 | TFDA Regulations</div>
                       </div>
                     </div>
                     <span class="doc-status status-active">Active</span>
@@ -1001,6 +1002,7 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
             <div class="sidebar">
@@ -1060,7 +1062,7 @@
               </div>
             </div>
           </div>
-          <div class="footer">Zamzam Drinking Water - Compliance Dashboard v5.0 | TBS / TFDA / Codex HACCP Aligned | Offline Deployment Ready</div>
+          <div class="footer">Zamzam Drinking Water - Compliance Dashboard v5.0 | TBS / Codex HACCP Aligned | Deployed on GitHub Pages</div>
         </div>
 
         <!-- ===== FORMS VIEW ===== -->
@@ -1359,7 +1361,6 @@
         { title: 'Physical & Chemical Parameters', fields: [
           { name: 'ph', label: 'pH', type: 'number', step: '0.01', hint: 'Range: 6.5 - 8.5' },
           { name: 'tds', label: 'TDS (mg/L)', type: 'number', step: '0.1', hint: 'Max: 1000 mg/L' },
-          { name: 'temperature', label: 'TEMP (°C)', type: 'number', step: '25.5 °C', hint: 'Max: ' },
           { name: 'turbidity', label: 'Turbidity (NTU)', type: 'number', step: '0.01', hint: 'Max: 1.0 NTU' },
           { name: 'chlorine', label: 'Chlorine Residual (mg/L)', type: 'number', step: '0.01', hint: 'Range: 0.2 - 0.5 mg/L' }
         ]},
@@ -1367,11 +1368,6 @@
           { name: 'coliform', label: 'Coliform (MPN/100ml)', type: 'number', hint: 'Limit: 0/100ml' },
           { name: 'ecoli', label: 'E. coli', type: 'select', options: ['Absent','Present'] },
           { name: 'tpc', label: 'Total Plate Count (CFU/ml)', type: 'number', hint: 'Max: 100 CFU/ml' },
-          { name: 'remarks', label: 'Remarks', type: 'textarea' }
-        ]} 
-        { title: 'Sensory Tests', fields: [
-          { name: 'appearance', label: 'Appearance', type: 'select', options: 'Acceptable', 'Unacceptable' },
-          { name: 'ecoli', label: 'E. coli', type: 'select', options: ['Acceptable','Unacceptable'] },
           { name: 'remarks', label: 'Remarks', type: 'textarea' }
         ]}
       ]
@@ -1891,25 +1887,269 @@
     document.body.style.overflow = '';
   }
 
+  
+  // ===================== MINIMAL XLSX GENERATOR =====================
+  // Generates proper .xlsx files (ZIP of XML) without external libraries
+  const XLSX = {
+    // CRC32 table for ZIP
+    _crcTable: null,
+    _getCrcTable() {
+      if (this._crcTable) return this._crcTable;
+      const table = new Uint32Array(256);
+      for (let i = 0; i < 256; i++) {
+        let c = i;
+        for (let j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+        table[i] = c;
+      }
+      this._crcTable = table;
+      return table;
+    },
+    _crc32(str) {
+      const table = this._getCrcTable();
+      let crc = -1;
+      for (let i = 0; i < str.length; i++) {
+        crc = (crc >>> 8) ^ table[(crc ^ str.charCodeAt(i)) & 0xFF];
+      }
+      return (crc ^ -1) >>> 0;
+    },
+    _utf8(str) {
+      return new TextEncoder().encode(str);
+    },
+    _dateToExcel(d) {
+      // Excel serial date: days since 1899-12-30
+      return (d.getTime() / 86400000) + 25569;
+    },
+    _escapeXml(str) {
+      if (str == null) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+    write(dataArray, sheetName) {
+      // dataArray: array of objects
+      if (!dataArray || !dataArray.length) return null;
+      const keys = Object.keys(dataArray[0]).filter(k => !k.startsWith('_'));
+
+      // Build shared strings
+      const sharedStrings = [];
+      const stringIndex = {};
+      let sstCount = 0;
+      let sstUnique = 0;
+      function addString(s) {
+        const val = String(s);
+        if (val in stringIndex) { sstCount++; return stringIndex[val]; }
+        stringIndex[val] = sstUnique;
+        sharedStrings.push(val);
+        sstCount++; sstUnique++;
+        return stringIndex[val];
+      }
+
+      // Build sheet XML
+      let rows = '';
+      // Header row
+      let headerCells = '';
+      keys.forEach((key, ci) => {
+        const col = this._colName(ci);
+        const si = addString(key);
+        headerCells += `<c r="${col}1" t="s"><v>${si}</v></c>`;
+      });
+      rows += `<row r="1">${headerCells}</row>`;
+
+      // Data rows
+      dataArray.forEach((obj, ri) => {
+        let cells = '';
+        keys.forEach((key, ci) => {
+          const col = this._colName(ci);
+          const val = obj[key];
+          const cellRef = col + (ri + 2);
+          if (val == null || val === '') {
+            cells += `<c r="${cellRef}"/>`;
+          } else if (typeof val === 'number') {
+            cells += `<c r="${cellRef}"><v>${val}</v></c>`;
+          } else if (val instanceof Date || (typeof val === 'string' && /^\d{4}-\d{2}-\d{2}/.test(val))) {
+            const d = new Date(val);
+            if (!isNaN(d)) {
+              cells += `<c r="${cellRef}" s="1"><v>${this._dateToExcel(d)}</v></c>`;
+            } else {
+              const si = addString(val);
+              cells += `<c r="${cellRef}" t="s"><v>${si}</v></c>`;
+            }
+          } else {
+            const si = addString(val);
+            cells += `<c r="${cellRef}" t="s"><v>${si}</v></c>`;
+          }
+        });
+        rows += `<row r="${ri + 2}">${cells}</row>`;
+      });
+
+      const sstXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="${sstCount}" uniqueCount="${sstUnique}">
+${sharedStrings.map(s => `<si><t>${this._escapeXml(s)}</t></si>`).join('')}
+</sst>`;
+
+      const sheetXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <sheetData>${rows}</sheetData>
+</worksheet>`;
+
+      const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <numFmts count="1"><numFmt numFmtId="164" formatCode="YYYY-MM-DD"/></numFmts>
+  <cellXfs count="2">
+    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
+    <xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
+  </cellXfs>
+</styleSheet>`;
+
+      const workbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets><sheet name="${this._escapeXml(sheetName || 'Sheet1')}" sheetId="1" r:id="rId1"/></sheets>
+</workbook>`;
+
+      const relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
+  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
+  <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>
+</Relationships>`;
+
+      const pkgRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`;
+
+      const ctXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
+  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
+  <Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>
+</Types>`;
+
+      const files = [
+        { name: '[Content_Types].xml', content: ctXml },
+        { name: '_rels/.rels', content: pkgRelsXml },
+        { name: 'xl/_rels/workbook.xml.rels', content: relsXml },
+        { name: 'xl/workbook.xml', content: workbookXml },
+        { name: 'xl/styles.xml', content: stylesXml },
+        { name: 'xl/sharedStrings.xml', content: sstXml },
+        { name: 'xl/worksheets/sheet1.xml', content: sheetXml }
+      ];
+
+      return this._zip(files);
+    },
+    _colName(n) {
+      let s = '';
+      n++;
+      while (n > 0) { n--; s = String.fromCharCode(65 + (n % 26)) + s; n = Math.floor(n / 26); }
+      return s;
+    },
+    _zip(files) {
+      const parts = [];
+      let cdOffset = 0;
+      const cdEntries = [];
+
+      files.forEach(f => {
+        const content = typeof f.content === 'string' ? this._utf8(f.content) : f.content;
+        const crc = this._crc32(f.content);
+        const uncompressedSize = content.length;
+        const compressedSize = uncompressedSize; // Store uncompressed for simplicity
+
+        // Local file header
+        const lfh = new Uint8Array(30 + f.name.length);
+        let p = 0;
+        lfh[p++] = 0x50; lfh[p++] = 0x4B; lfh[p++] = 0x03; lfh[p++] = 0x04; // sig
+        lfh[p++] = 20; lfh[p++] = 0; // version
+        lfh[p++] = 0; lfh[p++] = 0; // flags
+        lfh[p++] = 0; lfh[p++] = 0; // compression: store
+        lfh[p++] = 0; lfh[p++] = 0; // time
+        lfh[p++] = 0; lfh[p++] = 0; // date
+        lfh[p++] = crc & 0xFF; lfh[p++] = (crc >>> 8) & 0xFF; lfh[p++] = (crc >>> 16) & 0xFF; lfh[p++] = (crc >>> 24) & 0xFF;
+        lfh[p++] = compressedSize & 0xFF; lfh[p++] = (compressedSize >>> 8) & 0xFF; lfh[p++] = (compressedSize >>> 16) & 0xFF; lfh[p++] = (compressedSize >>> 24) & 0xFF;
+        lfh[p++] = uncompressedSize & 0xFF; lfh[p++] = (uncompressedSize >>> 8) & 0xFF; lfh[p++] = (uncompressedSize >>> 16) & 0xFF; lfh[p++] = (uncompressedSize >>> 24) & 0xFF;
+        lfh[p++] = f.name.length & 0xFF; lfh[p++] = (f.name.length >>> 8) & 0xFF;
+        lfh[p++] = 0; lfh[p++] = 0; // extra field len
+        for (let i = 0; i < f.name.length; i++) lfh[p++] = f.name.charCodeAt(i);
+
+        parts.push(lfh);
+        parts.push(content);
+
+        // Central directory entry
+        const cde = new Uint8Array(46 + f.name.length);
+        p = 0;
+        cde[p++] = 0x50; cde[p++] = 0x4B; cde[p++] = 0x01; cde[p++] = 0x02; // sig
+        cde[p++] = 20; cde[p++] = 0; // version made by
+        cde[p++] = 20; cde[p++] = 0; // version needed
+        cde[p++] = 0; cde[p++] = 0; // flags
+        cde[p++] = 0; cde[p++] = 0; // compression
+        cde[p++] = 0; cde[p++] = 0; // time
+        cde[p++] = 0; cde[p++] = 0; // date
+        cde[p++] = crc & 0xFF; cde[p++] = (crc >>> 8) & 0xFF; cde[p++] = (crc >>> 16) & 0xFF; cde[p++] = (crc >>> 24) & 0xFF;
+        cde[p++] = compressedSize & 0xFF; cde[p++] = (compressedSize >>> 8) & 0xFF; cde[p++] = (compressedSize >>> 16) & 0xFF; cde[p++] = (compressedSize >>> 24) & 0xFF;
+        cde[p++] = uncompressedSize & 0xFF; cde[p++] = (uncompressedSize >>> 8) & 0xFF; cde[p++] = (uncompressedSize >>> 16) & 0xFF; cde[p++] = (uncompressedSize >>> 24) & 0xFF;
+        cde[p++] = f.name.length & 0xFF; cde[p++] = (f.name.length >>> 8) & 0xFF;
+        cde[p++] = 0; cde[p++] = 0; // extra
+        cde[p++] = 0; cde[p++] = 0; // comment
+        cde[p++] = 0; cde[p++] = 0; // disk
+        cde[p++] = 0; cde[p++] = 0; // int attr
+        cde[p++] = 0; cde[p++] = 0; cde[p++] = 0; cde[p++] = 0; // ext attr
+        cde[p++] = cdOffset & 0xFF; cde[p++] = (cdOffset >>> 8) & 0xFF; cde[p++] = (cdOffset >>> 16) & 0xFF; cde[p++] = (cdOffset >>> 24) & 0xFF;
+        for (let i = 0; i < f.name.length; i++) cde[p++] = f.name.charCodeAt(i);
+        cdEntries.push(cde);
+
+        cdOffset += lfh.length + content.length;
+      });
+
+      const cdSize = cdEntries.reduce((s, e) => s + e.length, 0);
+      const cdStart = cdOffset;
+
+      // End of central directory
+      const eocd = new Uint8Array(22);
+      let p = 0;
+      eocd[p++] = 0x50; eocd[p++] = 0x4B; eocd[p++] = 0x05; eocd[p++] = 0x06;
+      eocd[p++] = 0; eocd[p++] = 0; // disk
+      eocd[p++] = 0; eocd[p++] = 0; // disk with cd
+      eocd[p++] = files.length & 0xFF; eocd[p++] = (files.length >>> 8) & 0xFF;
+      eocd[p++] = files.length & 0xFF; eocd[p++] = (files.length >>> 8) & 0xFF;
+      eocd[p++] = cdSize & 0xFF; eocd[p++] = (cdSize >>> 8) & 0xFF; eocd[p++] = (cdSize >>> 16) & 0xFF; eocd[p++] = (cdSize >>> 24) & 0xFF;
+      eocd[p++] = cdStart & 0xFF; eocd[p++] = (cdStart >>> 8) & 0xFF; eocd[p++] = (cdStart >>> 16) & 0xFF; eocd[p++] = (cdStart >>> 24) & 0xFF;
+      eocd[p++] = 0; eocd[p++] = 0; // comment len
+
+      const totalSize = parts.reduce((s, p) => s + p.length, 0) + cdSize + eocd.length;
+      const result = new Uint8Array(totalSize);
+      let offset = 0;
+      parts.forEach(part => { result.set(part, offset); offset += part.length; });
+      cdEntries.forEach(entry => { result.set(entry, offset); offset += entry.length; });
+      result.set(eocd, offset);
+
+      return new Blob([result], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    }
+  };
+
   function exportSubmission(formId, subId) {
     const subs = getSubmissions(formId);
     const sub = subs.find(s => s._id === subId);
     if (!sub) return;
-    const blob = new Blob([JSON.stringify(sub, null, 2)], { type: 'application/json' });
+    const schema = formSchemas[formId];
+    const blob = XLSX.write([sub], schema.title);
+    if (!blob) { alert('No data to export'); return; }
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = formId + '_' + subId + '.json';
+    a.download = formId + '_' + subId + '.xlsx';
     a.click();
     URL.revokeObjectURL(url);
   }
   function exportAllSubmissions(formId) {
     const subs = getSubmissions(formId);
-    const blob = new Blob([JSON.stringify(subs, null, 2)], { type: 'application/json' });
+    if (!subs.length) { alert('No submissions to export'); return; }
+    const schema = formSchemas[formId];
+    const blob = XLSX.write(subs, schema.title);
+    if (!blob) { alert('No data to export'); return; }
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = formId + '_all_submissions.json';
+    a.download = formId + '_all_submissions.xlsx';
     a.click();
     URL.revokeObjectURL(url);
   }
@@ -2207,454 +2447,8 @@
       ctx.fillText(label + ' (' + data[i] + ')', lx + 16, ly + 9);
       ly += 18;
     });
-}
-  // ===================== MODAL CONTENT =====================
-  const modalContent = {
-    setup: `<p><strong>Folder Setup Guide</strong></p>
-      <p>To link your files to the dashboard, create a <code>docs</code> folder in the same directory as this HTML file, with the following structure:</p>
-      <div class="folder-tree">
-📁 docs/<br>
-&nbsp;&nbsp;📁 <span class="folder">SOPs/</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;📄 <span class="file">ZDW-LAB-SOP-001_Water_Laboratory_Testing.docx</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-&nbsp;&nbsp;📁 <span class="folder">Forms/</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;📄 <span class="file">ZDW-LAB-FRM-001_Water_Quality_Test_Record.docx</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-&nbsp;&nbsp;📁 <span class="folder">Plans/</span><br>
-&nbsp;&nbsp;&nbsp;&nbsp;📄 <span class="file">ZDW-HACCP-PLAN-001_HACCP_Plan.docx</span>
-      </div>
-      <p><strong>Naming convention:</strong> Use the exact filenames shown above, or click any document link in the dashboard — your browser will attempt to open the file. If the file does not exist yet, simply save your DOCX/PDF/XLSX files into the correct folder with matching names.</p>
-      <p><strong>Tip:</strong> You can rename your existing files to match these paths, or edit the HTML file to point to your current filenames.</p>`,
-    capa: `<p><strong>CAPA Entry Form</strong></p>
-      <p>Use this workflow to document any non-conformance or potential improvement:</p>
-      <p><strong>1. Problem Description:</strong> Clearly state what happened, where, when, and who discovered it.</p>
-      <p><strong>2. Root Cause Analysis:</strong> Use 5 Whys, Fishbone, or FMEA to identify the underlying cause.</p>
-      <p><strong>3. Corrective Action:</strong> Immediate fix to address the current issue.</p>
-      <p><strong>4. Preventive Action:</strong> Long-term measure to prevent recurrence.</p>
-      <p><strong>5. Verification:</strong> Evidence that the action was effective (data, photos, re-audit).</p>
-      <p><strong>6. Closure:</strong> QA Manager sign-off with date.</p>
-      <p style="margin-top:12px;color:var(--text-light);font-size:11px;">Form reference: <a href="#" onclick="closeModal(); openForm('ZDW-CAPA-FRM-001'); return false;">ZDW-CAPA-FRM-001</a></p>`,
-    ccp: `<p><strong>CCP Monitoring Log Entry</strong></p>
-      <p>Record real-time data for each Critical Control Point during production:</p>
-      <p><strong>CCP 1 - Source Water:</strong> Record pH, coliform count, chlorine residual. Frequency: Every 4 hours.</p>
-      <p><strong>CCP 2 - Filtration:</strong> Record turbidity (NTU) and inlet/outlet pressure. Frequency: Every 2 hours.</p>
-      <p><strong>CCP 3 - Ozonation/UV:</strong> Record ozone residual (ppm) and UV intensity (mJ/cm²). Frequency: Every 2 hours.</p>
-      <p><strong>CCP 4 - Bottle Sterilization:</strong> Record temperature (°C) and exposure time (sec). Frequency: Every batch.</p>
-      <p><strong>CCP 5 - Seal Integrity:</strong> Record leak test result (Pass/Fail) and cap torque (Nm). Frequency: Every batch.</p>
-      <p style="margin-top:12px;color:var(--text-light);font-size:11px;">Form reference: <a href="#" onclick="closeModal(); openForm('ZDW-CCP-FRM-001'); return false;">ZDW-CCP-FRM-001</a></p>`,
-    recall: `<p><strong>Product Recall Procedure</strong></p>
-      <p>Follow these steps immediately upon identifying a product safety issue:</p>
-      <p><strong>Step 1 - Identification:</strong> Confirm the issue through lab testing or customer complaint. Document batch numbers and quantities affected.</p>
-      <p><strong>Step 2 - Notification:</strong> Alert TFDA within 24 hours. Notify all distributors and retailers via phone and written notice.</p>
-      <p><strong>Step 3 - Public Alert:</strong> Issue press release and social media notice if product reached consumers.</p>
-      <p><strong>Step 4 - Retrieval:</strong> Track and collect all affected product from distribution chain. Log quantities retrieved vs. distributed.</p>
-      <p><strong>Step 5 - Investigation:</strong> Conduct root cause analysis. Preserve samples for lab testing.</p>
-      <p><strong>Step 6 - Corrective Action:</strong> Fix the root cause. Re-inspect all equipment and processes before resuming production.</p>
-      <p><strong>Step 7 - Closure Report:</strong> Submit final report to TFDA with evidence of resolution.</p>
-      <p style="margin-top:12px;color:var(--text-light);font-size:11px;">SOP: <a href="docs/SOPs/ZDW-RECALL-SOP-001_Product_Recall.docx">ZDW-RECALL-SOP-001</a> | Form: <a href="#" onclick="closeModal(); openForm('ZDW-RECALL-FRM-001'); return false;">ZDW-RECALL-FRM-001</a></p>`,
-    audit: `<p><strong>Internal Audit Scheduling</strong></p>
-      <p>Plan and execute internal audits per ISO 22000 requirements:</p>
-      <p><strong>Frequency:</strong> Minimum once per quarter. High-risk areas monthly.</p>
-      <p><strong>Scope:</strong> Cover all departments: Production, QC Lab, Packaging, Warehouse, Maintenance, and Administration.</p>
-      <p><strong>Auditor Requirements:</strong> Must be trained and independent of the area being audited. No self-audits.</p>
-      <p><strong>Checklist:</strong> Use ZDW-AUDIT-FRM-001 checklist tailored to each department.</p>
-      <p><strong>Findings Classification:</strong></p>
-      <p>- <strong>Major:</strong> Systemic failure affecting product safety. Requires immediate corrective action.</p>
-      <p>- <strong>Minor:</strong> Isolated incident not affecting safety. Requires correction within 30 days.</p>
-      <p>- <strong>Observation:</strong> Potential improvement area. No mandatory action but recommended.</p>
-      <p><strong>Follow-up:</strong> Verify closure of all findings within agreed timelines. Escalate overdue items to management.</p>
-      <p style="margin-top:12px;color:var(--text-light);font-size:11px;">SOP: <a href="docs/SOPs/ZDW-AUDIT-SOP-001_Internal_Audit.docx">ZDW-AUDIT-SOP-001</a> | Form: <a href="#" onclick="closeModal(); openForm('ZDW-AUDIT-FRM-001'); return false;">ZDW-AUDIT-FRM-001</a></p>`
-  };
-
-  function openModal(key) {
-    const titles = { setup: 'Folder Setup Guide', capa: 'New CAPA Entry', ccp: 'Log CCP Monitoring', recall: 'Initiate Product Recall', audit: 'Schedule Internal Audit' };
-    document.getElementById('modalTitle').textContent = titles[key] || 'Action';
-    document.getElementById('modalBody').innerHTML = modalContent[key] || '<p>Action details will appear here.</p>';
-    document.getElementById('modalOverlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
   }
-  function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  // ===================== DEMO DATA =====================
-  function generateDemoData() {
-    if (localStorage.getItem('zamzam-demo-loaded')) return;
-    const demo = {};
-    const now = new Date();
-    // Water Quality Tests
-    demo['ZDW-LAB-FRM-001'] = Array.from({length: 5}, (_, i) => ({
-      date: new Date(now.getTime() - i * 86400000 * 2).toISOString().split('T')[0],
-      batchNo: 'ZW-2408' + (10 + i), samplePoint: ['Finished Product','Post-Ozonation','Raw Water Intake','Post-Filtration','Distribution Line'][i],
-      tester: ['John M.','Amina K.','John M.','Amina K.','John M.'][i],
-      ph: (6.8 + Math.random() * 1.2).toFixed(2), tds: (120 + Math.random() * 50).toFixed(1),
-      turbidity: (0.2 + Math.random() * 0.3).toFixed(2), chlorine: (0.25 + Math.random() * 0.15).toFixed(2),
-      coliform: 0, ecoli: 'Absent', tpc: Math.floor(20 + Math.random() * 40),
-      remarks: 'Within limits', _id: 'demo-lab-' + i, _submittedAt: new Date(now.getTime() - i * 86400000 * 2).toISOString()
-    }));
-    // CCP Monitoring
-    demo['ZDW-CCP-FRM-001'] = Array.from({length: 6}, (_, i) => ({
-      date: new Date(now.getTime() - i * 86400000).toISOString().split('T')[0],
-      shift: ['Morning (06:00-14:00)','Afternoon (14:00-22:00)','Night (22:00-06:00)'][i % 3],
-      operator: ['Op1','Op2','Op3','Op1','Op2','Op3'][i],
-      ccp1_ph: (7.0 + Math.random()).toFixed(2), ccp1_coliform: 'Pass', ccp1_chlorine: (0.3 + Math.random() * 0.1).toFixed(2),
-      ccp2_turbidity: (0.3 + Math.random() * 0.3).toFixed(2), ccp2_pressure: (2.5 + Math.random()).toFixed(1),
-      ccp3_ozone: (0.25 + Math.random() * 0.1).toFixed(2), ccp3_uv: (45 + Math.random() * 10).toFixed(1),
-      ccp4_temp: (85 + Math.random() * 5).toFixed(1), ccp4_time: (18 + Math.floor(Math.random() * 5)),
-      ccp5_leak: 'Pass', ccp5_torque: (1.4 + Math.random() * 0.4).toFixed(1),
-      deviation: i === 2 ? 'Yes' : 'No', deviationNotes: i === 2 ? 'Ozone briefly low' : '',
-      correctiveAction: i === 2 ? 'Adjusted ozone generator' : '', _id: 'demo-ccp-' + i,
-      _submittedAt: new Date(now.getTime() - i * 86400000).toISOString()
-    }));
-    // CAPAs
-    demo['ZDW-CAPA-FRM-001'] = [
-      { capaId: 'CAP-2026-001', dateRaised: '2026-07-15', raisedBy: 'QA Manager', department: 'Production', problem: 'Label misalignment on batch ZW-240715', rootCause: 'Printer calibration drift', severity: 'Medium', correctiveAction: 'Recalibrated printer', preventiveAction: 'Daily printer check', responsible: 'Production Supervisor', targetDate: '2026-07-20', completionDate: '2026-07-18', verification: 'Verified OK', status: 'Closed', _id: 'demo-capa-0', _submittedAt: '2026-07-15T10:00:00Z' },
-      { capaId: 'CAP-2026-002', dateRaised: '2026-08-01', raisedBy: 'Lab Tech', department: 'QC Lab', problem: 'pH meter reading unstable', rootCause: 'Electrode aging', severity: 'High', correctiveAction: 'Replace electrode', preventiveAction: 'Schedule electrode replacement every 6 months', responsible: 'Lab Manager', targetDate: '2026-08-10', completionDate: '', verification: '', status: 'In Progress', _id: 'demo-capa-1', _submittedAt: '2026-08-01T09:00:00Z' }
-    ];
-    // Training
-    demo['ZDW-TRAIN-FRM-001'] = Array.from({length: 4}, (_, i) => ({
-      employeeName: ['Ali H.','Fatima S.','Omar J.','Amina K.'][i], employeeId: 'ZDW-' + (100 + i),
-      department: ['Production','QC Lab','Packaging','Production'][i],
-      topic: ['HACCP Principles','GMP Basics','CCP Monitoring','Personal Hygiene'][i],
-      trainer: 'External Consultant', date: new Date(now.getTime() - i * 86400000 * 7).toISOString().split('T')[0],
-      duration: 4, attendance: 'Present', assessmentScore: [85,92,78,88][i], competency: 'Pass',
-      refresherDue: new Date(now.getFullYear() + 1, now.getMonth(), 1).toISOString().split('T')[0],
-      _id: 'demo-train-' + i, _submittedAt: new Date(now.getTime() - i * 86400000 * 7).toISOString()
-    }));
-    // Calibration
-    demo['ZDW-CAL-FRM-001'] = [
-      { instrumentId: 'ZDW-CAL-001', instrumentName: 'pH Meter', location: 'QC Lab', calDate: '2026-06-15', nextDue: '2026-09-15', standardUsed: 'NIST pH 4.01, 7.00, 10.01', result: 'Pass', technician: 'Lab Tech A', outOfTolerance: '', _id: 'demo-cal-0', _submittedAt: '2026-06-15T08:00:00Z' },
-      { instrumentId: 'ZDW-CAL-002', instrumentName: 'TDS Meter', location: 'QC Lab', calDate: '2026-05-20', nextDue: '2026-08-20', standardUsed: '1000 ppm NaCl', result: 'Pass', technician: 'Lab Tech B', outOfTolerance: '', _id: 'demo-cal-1', _submittedAt: '2026-05-20T08:00:00Z' },
-      { instrumentId: 'ZDW-CAL-003', instrumentName: 'Analytical Balance', location: 'QC Lab', calDate: '2026-02-10', nextDue: '2026-08-10', standardUsed: '1kg F1 Class', result: 'Pass', technician: 'Lab Tech A', outOfTolerance: '', _id: 'demo-cal-2', _submittedAt: '2026-02-10T08:00:00Z' }
-    ];
-    // Audit
-    demo['ZDW-AUDIT-FRM-001'] = [
-      { auditId: 'AUD-2026-Q2', date: '2026-06-20', auditor: 'Internal Auditor 1', department: 'Production', scope: 'Full GMP and HACCP compliance review', majorFindings: 0, minorFindings: 2, observations: 3, actionPlan: 'Address minor findings by July 15', targetDate: '2026-07-15', closureDate: '2026-07-10', status: 'Completed', _id: 'demo-audit-0', _submittedAt: '2026-06-20T10:00:00Z' },
-      { auditId: 'AUD-2026-Q3', date: '2026-08-01', auditor: 'Internal Auditor 2', department: 'QC Lab', scope: 'Lab procedures and calibration records', majorFindings: 1, minorFindings: 3, observations: 1, actionPlan: 'Fix pH meter issue, update SOPs', targetDate: '2026-08-31', closureDate: '', status: 'In Progress', _id: 'demo-audit-1', _submittedAt: '2026-08-01T10:00:00Z' }
-    ];
-    // Complaints
-    demo['ZDW-COMP-FRM-001'] = [
-      { complaintId: 'COMP-2026-001', receiptDate: '2026-07-20', customerName: 'Retailer A', contact: 'retailer@example.com', product: '500ml Bottle', batchNo: 'ZW-240710', complaintNature: 'Leakage', investigation: 'Seal head worn', resolution: 'Replaced seal head, recalled batch', closureDate: '2026-07-25', status: 'Closed', _id: 'demo-comp-0', _submittedAt: '2026-07-20T08:00:00Z' }
-    ];
-    // GMP
-    demo['ZDW-GMP-FRM-001'] = [
-      { date: '2026-08-01', inspector: 'GMP Coordinator', area: 'All Areas', premises: 'Pass', equipment: 'Pass', personnel: 'Pass', waste: 'Pass', documentation: 'Pass', pestControl: 'Pass', score: 6, findings: 'None', actionRequired: 'None', _id: 'demo-gmp-0', _submittedAt: '2026-08-01T09:00:00Z' }
-    ];
-    // Production
-    demo['ZDW-PROD-FRM-001'] = [
-      { batchNo: 'ZW-240812', date: '2026-08-12', product: '500ml Bottle', rawMaterialLot: 'RM-240810', quantity: 10000, processTemp: 22.5, processPressure: 3.2, flowRate: 45.0, actualYield: 9850, rejected: 150, qcChecks: 'pH, TDS, turbidity OK', releaseStatus: 'Released', operator: 'Op1', supervisor: 'Sup1', _id: 'demo-prod-0', _submittedAt: '2026-08-12T16:00:00Z' }
-    ];
-    // Packaging
-    demo['ZDW-PKG-FRM-001'] = [
-      { date: '2026-08-12', batchNo: 'ZW-240812', inspector: 'QC Inspector', labelBatch: 'Pass', labelExpiry: 'Pass', labelTFDA: 'Pass', sealIntegrity: 'Pass', capTorque: 1.6, visualDefects: 2, qtyInspected: 500, qtyPassed: 498, status: 'Approved', _id: 'demo-pkg-0', _submittedAt: '2026-08-12T18:00:00Z' }
-    ];
-    // Management Review
-    demo['ZDW-MGMT-FRM-001'] = [
-      { reviewDate: '2026-07-15', quarter: 'Q2', attendees: 'CEO, QA Manager, Production Manager, Lab Manager', kpis: 'Production yield 98.5%, complaint rate 0.01%', auditResults: 'Q2 audit completed with 2 minor findings', customerFeedback: 'Positive trend, 4.8/5 rating', processPerformance: 'All CCPs within limits', resourceNeeds: 'Hire 2 additional lab technicians', improvements: 'Implement automated CCP logging', nextReview: '2026-10-15', _id: 'demo-mgmt-0', _submittedAt: '2026-07-15T14:00:00Z' }
-    ];
-    // Environmental
-    demo['ZDW-ENV-FRM-001'] = [
-      { date: '2026-08-01', area: 'Water Source', monitoredBy: 'Env Officer', airQuality: 'Good', waterSource: 'Compliant', wasteDisposal: 'Yes', effluentTest: 'Pass', result: 'Satisfactory', actionRequired: 'None', _id: 'demo-env-0', _submittedAt: '2026-08-01T10:00:00Z' }
-    ];
-    // Supplier
-    demo['ZDW-SUPP-FRM-001'] = [
-      { supplierName: 'ABC Chemicals Ltd', product: 'Sodium Hypochlorite', contact: 'Mr. Smith', certificates: 'Yes', auditResult: 'Pass', sampleTest: 'Pass', deliveryPerformance: 'Good', overallRating: 4, approvalStatus: 'Approved', notes: 'Reliable supplier', _id: 'demo-supp-0', _submittedAt: '2026-06-01T10:00:00Z' }
-    ];
-    // Recall
-    demo['ZDW-RECALL-FRM-001'] = [];
-
-    saveFormData(demo);
-    localStorage.setItem('zamzam-demo-loaded', 'true');
-  }
-  generateDemoData();
-
+  <script>
+<body>
+<html>
   
-  // ===================== MINIMAL XLSX GENERATOR =====================
-  // Generates proper .xlsx files (ZIP of XML) without external libraries
-  const XLSX = {
-    // CRC32 table for ZIP
-    _crcTable: null,
-    _getCrcTable() {
-      if (this._crcTable) return this._crcTable;
-      const table = new Uint32Array(256);
-      for (let i = 0; i < 256; i++) {
-        let c = i;
-        for (let j = 0; j < 8; j++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
-        table[i] = c;
-      }
-      this._crcTable = table;
-      return table;
-    },
-    _crc32(str) {
-      const table = this._getCrcTable();
-      let crc = -1;
-      for (let i = 0; i < str.length; i++) {
-        crc = (crc >>> 8) ^ table[(crc ^ str.charCodeAt(i)) & 0xFF];
-      }
-      return (crc ^ -1) >>> 0;
-    },
-    _utf8(str) {
-      return new TextEncoder().encode(str);
-    },
-    _dateToExcel(d) {
-      // Excel serial date: days since 1899-12-30
-      return (d.getTime() / 86400000) + 25569;
-    },
-    _escapeXml(str) {
-      if (str == null) return '';
-      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-    },
-    write(dataArray, sheetName) {
-      // dataArray: array of objects
-      if (!dataArray || !dataArray.length) return null;
-      const keys = Object.keys(dataArray[0]).filter(k => !k.startsWith('_'));
-
-      // Build shared strings
-      const sharedStrings = [];
-      const stringIndex = {};
-      let sstCount = 0;
-      let sstUnique = 0;
-      function addString(s) {
-        const val = String(s);
-        if (val in stringIndex) { sstCount++; return stringIndex[val]; }
-        stringIndex[val] = sstUnique;
-        sharedStrings.push(val);
-        sstCount++; sstUnique++;
-        return stringIndex[val];
-      }
-
-      // Build sheet XML
-      let rows = '';
-      // Header row
-      let headerCells = '';
-      keys.forEach((key, ci) => {
-        const col = this._colName(ci);
-        const si = addString(key);
-        headerCells += `<c r="${col}1" t="s"><v>${si}</v></c>`;
-      });
-      rows += `<row r="1">${headerCells}</row>`;
-
-      // Data rows
-      dataArray.forEach((obj, ri) => {
-        let cells = '';
-        keys.forEach((key, ci) => {
-          const col = this._colName(ci);
-          const val = obj[key];
-          const cellRef = col + (ri + 2);
-          if (val == null || val === '') {
-            cells += `<c r="${cellRef}"/>`;
-          } else if (typeof val === 'number') {
-            cells += `<c r="${cellRef}"><v>${val}</v></c>`;
-          } else if (val instanceof Date || (typeof val === 'string' && /^\d{4}-\d{2}-\d{2}/.test(val))) {
-            const d = new Date(val);
-            if (!isNaN(d)) {
-              cells += `<c r="${cellRef}" s="1"><v>${this._dateToExcel(d)}</v></c>`;
-            } else {
-              const si = addString(val);
-              cells += `<c r="${cellRef}" t="s"><v>${si}</v></c>`;
-            }
-          } else {
-            const si = addString(val);
-            cells += `<c r="${cellRef}" t="s"><v>${si}</v></c>`;
-          }
-        });
-        rows += `<row r="${ri + 2}">${cells}</row>`;
-      });
-
-      const sstXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<sst xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" count="${sstCount}" uniqueCount="${sstUnique}">
-${sharedStrings.map(s => `<si><t>${this._escapeXml(s)}</t></si>`).join('')}
-</sst>`;
-
-      const sheetXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <sheetData>${rows}</sheetData>
-</worksheet>`;
-
-      const stylesXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
-  <numFmts count="1"><numFmt numFmtId="164" formatCode="YYYY-MM-DD"/></numFmts>
-  <cellXfs count="2">
-    <xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/>
-    <xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/>
-  </cellXfs>
-</styleSheet>`;
-
-      const workbookXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
-  <sheets><sheet name="${this._escapeXml(sheetName || 'Sheet1')}" sheetId="1" r:id="rId1"/></sheets>
-</workbook>`;
-
-      const relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/>
-  <Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>
-  <Relationship Id="rId3" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/sharedStrings" Target="sharedStrings.xml"/>
-</Relationships>`;
-
-      const pkgRelsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
-  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
-</Relationships>`;
-
-      const ctXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
-  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
-  <Default Extension="xml" ContentType="application/xml"/>
-  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
-  <Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>
-  <Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>
-  <Override PartName="/xl/sharedStrings.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sharedStrings+xml"/>
-</Types>`;
-
-      const files = [
-        { name: '[Content_Types].xml', content: ctXml },
-        { name: '_rels/.rels', content: pkgRelsXml },
-        { name: 'xl/_rels/workbook.xml.rels', content: relsXml },
-        { name: 'xl/workbook.xml', content: workbookXml },
-        { name: 'xl/styles.xml', content: stylesXml },
-        { name: 'xl/sharedStrings.xml', content: sstXml },
-        { name: 'xl/worksheets/sheet1.xml', content: sheetXml }
-      ];
-
-      return this._zip(files);
-    },
-    _colName(n) {
-      let s = '';
-      n++;
-      while (n > 0) { n--; s = String.fromCharCode(65 + (n % 26)) + s; n = Math.floor(n / 26); }
-      return s;
-    },
-    _zip(files) {
-      const parts = [];
-      let cdOffset = 0;
-      const cdEntries = [];
-
-      files.forEach(f => {
-        const content = typeof f.content === 'string' ? this._utf8(f.content) : f.content;
-        const crc = this._crc32(f.content);
-        const uncompressedSize = content.length;
-        const compressedSize = uncompressedSize; // Store uncompressed for simplicity
-
-        // Local file header
-        const lfh = new Uint8Array(30 + f.name.length);
-        let p = 0;
-        lfh[p++] = 0x50; lfh[p++] = 0x4B; lfh[p++] = 0x03; lfh[p++] = 0x04; // sig
-        lfh[p++] = 20; lfh[p++] = 0; // version
-        lfh[p++] = 0; lfh[p++] = 0; // flags
-        lfh[p++] = 0; lfh[p++] = 0; // compression: store
-        lfh[p++] = 0; lfh[p++] = 0; // time
-        lfh[p++] = 0; lfh[p++] = 0; // date
-        lfh[p++] = crc & 0xFF; lfh[p++] = (crc >>> 8) & 0xFF; lfh[p++] = (crc >>> 16) & 0xFF; lfh[p++] = (crc >>> 24) & 0xFF;
-        lfh[p++] = compressedSize & 0xFF; lfh[p++] = (compressedSize >>> 8) & 0xFF; lfh[p++] = (compressedSize >>> 16) & 0xFF; lfh[p++] = (compressedSize >>> 24) & 0xFF;
-        lfh[p++] = uncompressedSize & 0xFF; lfh[p++] = (uncompressedSize >>> 8) & 0xFF; lfh[p++] = (uncompressedSize >>> 16) & 0xFF; lfh[p++] = (uncompressedSize >>> 24) & 0xFF;
-        lfh[p++] = f.name.length & 0xFF; lfh[p++] = (f.name.length >>> 8) & 0xFF;
-        lfh[p++] = 0; lfh[p++] = 0; // extra field len
-        for (let i = 0; i < f.name.length; i++) lfh[p++] = f.name.charCodeAt(i);
-
-        parts.push(lfh);
-        parts.push(content);
-
-        // Central directory entry
-        const cde = new Uint8Array(46 + f.name.length);
-        p = 0;
-        cde[p++] = 0x50; cde[p++] = 0x4B; cde[p++] = 0x01; cde[p++] = 0x02; // sig
-        cde[p++] = 20; cde[p++] = 0; // version made by
-        cde[p++] = 20; cde[p++] = 0; // version needed
-        cde[p++] = 0; cde[p++] = 0; // flags
-        cde[p++] = 0; cde[p++] = 0; // compression
-        cde[p++] = 0; cde[p++] = 0; // time
-        cde[p++] = 0; cde[p++] = 0; // date
-        cde[p++] = crc & 0xFF; cde[p++] = (crc >>> 8) & 0xFF; cde[p++] = (crc >>> 16) & 0xFF; cde[p++] = (crc >>> 24) & 0xFF;
-        cde[p++] = compressedSize & 0xFF; cde[p++] = (compressedSize >>> 8) & 0xFF; cde[p++] = (compressedSize >>> 16) & 0xFF; cde[p++] = (compressedSize >>> 24) & 0xFF;
-        cde[p++] = uncompressedSize & 0xFF; cde[p++] = (uncompressedSize >>> 8) & 0xFF; cde[p++] = (uncompressedSize >>> 16) & 0xFF; cde[p++] = (uncompressedSize >>> 24) & 0xFF;
-        cde[p++] = f.name.length & 0xFF; cde[p++] = (f.name.length >>> 8) & 0xFF;
-        cde[p++] = 0; cde[p++] = 0; // extra
-        cde[p++] = 0; cde[p++] = 0; // comment
-        cde[p++] = 0; cde[p++] = 0; // disk
-        cde[p++] = 0; cde[p++] = 0; // int attr
-        cde[p++] = 0; cde[p++] = 0; cde[p++] = 0; cde[p++] = 0; // ext attr
-        cde[p++] = cdOffset & 0xFF; cde[p++] = (cdOffset >>> 8) & 0xFF; cde[p++] = (cdOffset >>> 16) & 0xFF; cde[p++] = (cdOffset >>> 24) & 0xFF;
-        for (let i = 0; i < f.name.length; i++) cde[p++] = f.name.charCodeAt(i);
-        cdEntries.push(cde);
-
-        cdOffset += lfh.length + content.length;
-      });
-
-      const cdSize = cdEntries.reduce((s, e) => s + e.length, 0);
-      const cdStart = cdOffset;
-
-      // End of central directory
-      const eocd = new Uint8Array(22);
-      let p = 0;
-      eocd[p++] = 0x50; eocd[p++] = 0x4B; eocd[p++] = 0x05; eocd[p++] = 0x06;
-      eocd[p++] = 0; eocd[p++] = 0; // disk
-      eocd[p++] = 0; eocd[p++] = 0; // disk with cd
-      eocd[p++] = files.length & 0xFF; eocd[p++] = (files.length >>> 8) & 0xFF;
-      eocd[p++] = files.length & 0xFF; eocd[p++] = (files.length >>> 8) & 0xFF;
-      eocd[p++] = cdSize & 0xFF; eocd[p++] = (cdSize >>> 8) & 0xFF; eocd[p++] = (cdSize >>> 16) & 0xFF; eocd[p++] = (cdSize >>> 24) & 0xFF;
-      eocd[p++] = cdStart & 0xFF; eocd[p++] = (cdStart >>> 8) & 0xFF; eocd[p++] = (cdStart >>> 16) & 0xFF; eocd[p++] = (cdStart >>> 24) & 0xFF;
-      eocd[p++] = 0; eocd[p++] = 0; // comment len
-
-      const totalSize = parts.reduce((s, p) => s + p.length, 0) + cdSize + eocd.length;
-      const result = new Uint8Array(totalSize);
-      let offset = 0;
-      parts.forEach(part => { result.set(part, offset); offset += part.length; });
-      cdEntries.forEach(entry => { result.set(entry, offset); offset += entry.length; });
-      result.set(eocd, offset);
-
-      return new Blob([result], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    }
-  };
-
-  function exportSubmission(formId, subId) {
-    const subs = getSubmissions(formId);
-    const sub = subs.find(s => s._id === subId);
-    if (!sub) return;
-    const schema = formSchemas[formId];
-    const blob = XLSX.write([sub], schema.title);
-    if (!blob) { alert('No data to export'); return; }
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = formId + '_' + subId + '.xlsx';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-  function exportAllSubmissions(formId) {
-    const subs = getSubmissions(formId);
-    if (!subs.length) { alert('No submissions to export'); return; }
-    const schema = formSchemas[formId];
-    const blob = XLSX.write(subs, schema.title);
-    if (!blob) { alert('No data to export'); return; }
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = formId + '_all_submissions.xlsx';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  
-  // ===================== EVENT LISTENERS =====================
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closeModal(); closeFormModal(); closeSubModal();
-      document.getElementById('notifDropdown').classList.remove('open');
-    }
-    if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA' && document.activeElement.tagName !== 'SELECT') {
-      e.preventDefault();
-      const search = document.getElementById('searchInput');
-      if (search) search.focus();
-    }
-  });
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.notif-btn') && !e.target.closest('.notif-dropdown')) {
-      const nd = document.getElementById('notifDropdown');
-      if (nd) nd.classList.remove('open');
-    }
-  });
-</script>
-</body>
-</html>
